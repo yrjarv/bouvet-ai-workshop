@@ -22,7 +22,7 @@ class ImageRecognitionClient:
 
         try:
             # Make the prediction
-            results = predictor.classify_image(
+            results = predictor.detect_image(
                     self.project_id,
                     self.iteration_name,
                     image.read()
@@ -30,10 +30,10 @@ class ImageRecognitionClient:
 
             predictions = [(prediction.tag_name.lower()) 
                            for prediction in results.predictions
-                           if prediction.probability >= 0.02
+                           if prediction.probability >= 0.6
                         ]
-
-            return predictions
+            unique_ingredients = list(dict.fromkeys(predictions))
+            return unique_ingredients
 
         except FileNotFoundError:
             print(f"Error: File not found at path '{image}'")
