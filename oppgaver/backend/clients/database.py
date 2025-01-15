@@ -15,13 +15,18 @@ class Database:
         self.client = service.get_table_client(table_name="recipes")
 
     def save_recipe(self, user_id: str, recipe: Recipe) -> Recipe:
-        entity = asdict(recipe)
+        entity = dict()
 
+        entity["imageUrl"] = recipe.imageUrl
+        entity["recipeText"] = recipe.recipeText
+        entity["id"] = recipe.id
+        entity["ingredients"] = ",".join(recipe.ingredients)
+
+        # PartitionKey and RowKey are required by Azure Table Service to organize and index data.
+        # PartitionKey groups related entities (in this case, all recipes for a specific user),
+        # and RowKey uniquely identifies each entity within that partition.
         entity["PartitionKey"] = user_id
         entity["RowKey"] = recipe.id
-
-        entity["user_id"] = user_id
-        entity["ingredients"] = ",".join(entity["ingredients"])
 
         self.client.create_entity(entity)
 
@@ -32,18 +37,9 @@ class Database:
 
         try:
             result = self.client.query_entities(user_id_filter)
-
-            recipe_list = []
-            for item in result:
-                # Map the Cosmos DB item to a RecipeData object
-                recipe_data = Recipe(
-                    id=item.get('id'),
-                    recipeText=item.get('recipeText'),
-                    imageUrl=item.get('imageUrl'),
-                    ingredients=item.get('ingredients').split(",") or []
-                )
-                recipe_list.append(recipe_data)
-            return recipe_list
+            # TODO - oppgave 3.2 return a list of recipes
+            # https://learn.microsoft.com/en-us/python/api/overview/azure/data-tables-readme?view=azure-python#querying-entities
+            return []
 
         except Exception as e:
             return None

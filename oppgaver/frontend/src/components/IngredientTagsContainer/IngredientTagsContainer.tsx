@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import styles from "./IngredientTagsContainer.module.css";
 import Recipe from "../../model/Recipe.tsx";
-import { useUserId } from "../../hooks/useUserId.ts";
 
 interface TagProps {
   id: number;
@@ -21,7 +20,6 @@ export default function IngredientTagsContainer({
                                                 }: IngredientTagsContainerProps) {
   const [tags, setTags] = useState<TagProps[]>([]);
   const [newTag, setNewTag] = useState("");
-  const userId = useUserId();
 
   useEffect(() => {
     if (aiTags.length > 0) {
@@ -57,7 +55,7 @@ export default function IngredientTagsContainer({
       const response = await fetch("http://localhost:5000/generate_recipe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ tags, userId })
+        body: JSON.stringify({ tags })
       });
 
       if (!response.ok) {

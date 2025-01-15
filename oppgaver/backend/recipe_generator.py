@@ -47,19 +47,18 @@ class RecipeGenerator:
     image_recognition_client: ImageRecognitionClient
     llm_client: LangueModelClient
     image_generation_client: ImageGeneratorClient
-    database: Database
 
     def generate_recipe(self, user_id: str, tags: list[str]):
-        recipe = self.llm_client.generate_text(recipe_prompt(tags))
+        recipeText = self.llm_client.generate_text(recipe_prompt(tags))
         imageUrl = self.image_generation_client.generate_image(
-            image_prompt(recipe))
+            image_prompt(recipeText))
         unique_id = str(uuid.uuid4())
 
         recipeData = Recipe(
             unique_id,
-            recipe,
+            recipeText,
             imageUrl,
             tags
         )
 
-        return self.database.save_recipe(user_id, recipeData)
+        return recipeData
