@@ -45,7 +45,7 @@ Follow these steps to set up and run the backend:
 4. **Install neccessary Python packages**
     ```bash
     pip3 install -r requirements.txt
-5. **Run Flask serever**
+5. **Run Flask server**
     ```bash
     flask run
     

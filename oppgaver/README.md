@@ -11,6 +11,9 @@ For å kunne bruke Azure-tjenestene må vi legge til API-nøkler og endepunkter 
 **Oppgave**
 
 1. Opprett en `.env`-fil i rooten av prosjektet.
+**Oppgave**
+
+1. Opprett en `.env`-fil i rooten av prosjektet.
 2. Legg til følgende variabler i `.env`-filen:
 
 ```
@@ -24,9 +27,11 @@ _Vi trenger en side i frontenden der brukerne kan laste opp bilder._
 
 **Oppgave**
 
+
 1. Naviger til app.tsx
 2. Opprett en ny route som peker til den ferdiglagde komponenten ImageUploadPage.
 
+### 1.3 Validering av filtype i SelectFileButton
 ### 1.3 Validering av filtype i SelectFileButton
 
 _SelectFileButton-komponenten er en knapp som lar brukeren velge en fil (for eksempel et bilde) fra enheten sin._
@@ -34,8 +39,11 @@ _SelectFileButton-komponenten er en knapp som lar brukeren velge en fil (for eks
 **Oppgave**
 
 1. Legg til en sjekk i knappen som sikrer at kun følgende filtyper aksepteres: .png, .jpg, .jpeg, .svg
+**Oppgave**
 
-_Hint: Her kan man bruke accept-attributtet._
+1. Legg til en sjekk i knappen som sikrer at kun følgende filtyper aksepteres: .png, .jpg, .jpeg, .svg
+
+*Hint: Her kan man bruke accept-attributtet.*
 
 ### 1.4 Backend-route for å gjenkjenne ingredienser
 
@@ -81,49 +89,52 @@ _I oppgave 2 skal en oppskrift genereres basert på ingrediensene som ble valgt 
 
 ### 2.1 Kall generate_recipe fra frontenden
 
-_generateRecipe i IngredientTagsContainer.tsx er en fetchkall som sender en liste med ingredienser (tags) til backend for å generere oppskrift. Funskjonen håndterer feil og logger relevante data. Når responsen fra backend er mottatt, skal oppskriften returneres som JSON og `onDone` kalles med dataen._
+*I IngredientTagsContainer.tsx finnes det en funskjon `generateRecipe`, som skal kalles når man ønsker å sende listen med tags til backend, og generere en oppskrift. Denne funksjonen er ikke ferdig implementert*
 
 **Oppgave**
+1. Fullfør implementasjonen av `generateRecipe`. Den skal ta imot en liste av tags (`tags: string[]`), og sende disse til `/generate_recipe` endpointet.
+2. Hvis responsen er OK, konverter resultatet fra backend til JSON med `await response.json()`.
+3. Bruk oppskriften (JSON-data) fra responsen og kall `onDone`-funksjonen med oppskriften.
 
-1.  Lag en asynkron funksjon kalt `generateRecipe` som tar imot en liste av tags (`tags: string[]`).
-2.  Hvis responsen er OK, konverter resultatet fra backend til JSON med `await response.json()`.
-3.  Bruk oppskriften (JSON-data) fra responsen og kall `onDone`-funksjonen med oppskriften.
+### 2.2 Implementer RecipeGenerator
 
-### 2.2 Forbedre Prompten
-
-_En godt formulert prompt er avgjørende for å generere relevante og presise resultater._
-
-#### Oppgave
-
-- Gå gjennom eksisterende tekst i prompten i `recipe_generator.py`.
-- Sørg for at prompten er klar, spesifikk og inkluderer all nødvendig kontekst for å generere en oppskrift av høy kvalitet.
-
-### 2.3 Implementer RecipeGenerator
-
-_I backend finnes det en klasse `RecipeGenerator` som er ansvarlig for å generere en oppskrift basert på en liste med ingredienser. Foreløpig returnerer denne klassen bare dummy-data._
+*I backend finnes det en klasse `RecipeGenerator` som er ansvarlig for å generere en oppskrift basert på en liste med
+ingredienser. Foreløpig returnerer denne klassen bare dummy-data.*
 
 #### Oppgave
 
 Gjør klassen `RecipeGenerator` i stand til å:
 
-1.  Ta imot en liste med ingredienser som input.
-2.  Kalle alle nødvendige Azure-tjenester for å generere en oppskrift.
-3.  Returnere en komplett og strukturert oppskrift som resultat.
+1. Ta imot en liste med ingredienser som input.
+2. Kalle alle nødvendige Azure-tjenester for å generere en oppskrift.
+3. Returnere en komplett og strukturert oppskrift som resultat.
 
-_Hint: Datamodellen for hvordan en oppskrift skal se ut finnes i `backend/model/recipe.py`_
+### 2.3 Forbedre Prompten
+
+*En godt formulert prompt er avgjørende for å generere relevante og presise resultater.*
+
+#### Oppgave
+
+- Gå gjennom eksisterende tekst i prompten i `recipe_generator.py`.
+- Sørg for at prompten er klar, spesifikk og inkluderer all nødvendig kontekst for å generere en oppskrift av høy
+  kvalitet.
 
 ## Oppgave 3 – DATABASEOPPGAVEN (Azure Table Service)
 
-_Nå skal vi lagre den genererte oppskriften i en database. Vi bruker Azure Table Service (en enkel NoSQL-løsning) for å
-gjøre dette._
+*Nå skal vi lagre den genererte oppskriften i en database, og hente ut tidligere genererte oppskrifter og vise disse i
+frontend. Vi bruker Azure Table Service (en enkel NoSQL-løsning) for å
+gjøre dette.*
 
 ---
 
 ### 3.1 Lagring av resultatet
 
-**Oppgave**
-Når generate_recipe kjører, bruk save_recipe for å sende dataene til databasen.
-Få med user_id // TODO: Vi må forklare hvorfor vi har en user id og hvordan denne genereres og alt sånt
+### Oppgave
+
+Etter `generate_recipe` er ferdig med å generere en oppskrift,
+Når generate_recipe kjører, bruk save_recipe for å sende dataene til databasen. Denne funksjonen tar to argumenter.
+Først, oppskriften, som vi allerede har, og nummer to, en unik bruker-id `user_id`. Finn funksjonen `useUserId()` i
+frontend, og bruk denne til å sende med `user_id` i `generate_recipe` requesten.
 
 ### 3.3 Hent ut oppskrifter – get_recipes
 
@@ -131,7 +142,10 @@ Om Forrige steg er gjort riktig, skal
 oppskriftene dine ligge i Azure Table Service, og det er nå mulig å skrive en funskjon for å hente ut alle oppskrifter
 som tilhører deg, og vise disse i frontend.
 
-- **Oppgave**: I database.py finnes det en funksjon `get_recipes`. Denne er delvis implementert, og gjør følgende:
+### Oppgave
+
+I database.py finnes det en funksjon `get_recipes`. Denne er delvis implementert, og gjør følgende:
+
 - lager en query som spør etter alle oppskrifter som matcher din `user_id`
 - kaller Azure klienten for å hente ut dataen
 

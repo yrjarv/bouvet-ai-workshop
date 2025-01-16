@@ -15,9 +15,8 @@ routes = Blueprint('routes', __name__)
 ocr = ImageRecognitionClient()
 llm = LangueModelClient()
 img_gen = ImageGeneratorClient()
-database = Database()
 
-recipe_gen = RecipeGenerator(ocr, llm, img_gen, database)
+recipe_gen = RecipeGenerator(ocr, llm, img_gen)
 
 
 @routes.route('/generate_recipe', methods=['POST'])
@@ -26,16 +25,10 @@ def generate_recipe():
         return jsonify({"error": "Request must be in JSON format"}), 400
 
     data = request.get_json()
-    print("request data", data)
     if 'tags' not in data or not isinstance(data['tags'], list):
         return jsonify({"error": "Missing or invalid 'tags' field "}), 400
-    if 'userId' not in data or not isinstance(data['userId'], str):
-        return jsonify({"error": "Missing or invalid 'userId' field "}), 400
 
-    result = recipe_gen.generate_recipe(
-        data['userId'],
-        data['tags']
-    )
+    result = recipe_gen.generate_recipe()
 
     if result:
         return jsonify(result)

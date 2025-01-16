@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import styles from "./IngredientTagsContainer.module.css";
 import Recipe from "../../model/Recipe.tsx";
-import { useUserId } from "../../hooks/useUserId.ts";
 
 interface TagProps {
   id: number;
@@ -21,7 +20,6 @@ export default function IngredientTagsContainer({
                                                 }: IngredientTagsContainerProps) {
   const [tags, setTags] = useState<TagProps[]>([]);
   const [newTag, setNewTag] = useState("");
-  const userId = useUserId();
 
   useEffect(() => {
     if (aiTags.length > 0) {
@@ -50,31 +48,14 @@ export default function IngredientTagsContainer({
   };
 
   const generateRecipe = async (tags: string[]) => {
-    setLoading();
+    /*
+     * TODO oppgave 2.1
+     *  call generate_recipe endpoint
+     *  make loading spinner show when this runs
+     */
     try {
-      console.log("Sending tags to backend:", tags);
 
-      const response = await fetch("http://localhost:5000/generate_recipe", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ tags, userId })
-      });
-
-      if (!response.ok) {
-        const errorJson = await response.json();
-        console.error(
-          "generateRecipe failed\n",
-          "Status code: " + response.status + "\n",
-          "Error message: " + errorJson.error + "\n"
-        );
-        onDone(undefined);
-        return;
-      }
-
-      const data = await response.json();
-      console.log("Tags sent to backend successfully. Response:", data);
-      onDone(data as Recipe);
-    } catch (error) {
+    } catch(error) {
       console.error("Error sending tags to backend:", error);
       onDone(undefined);
     }

@@ -47,19 +47,27 @@ class RecipeGenerator:
     image_recognition_client: ImageRecognitionClient
     llm_client: LangueModelClient
     image_generation_client: ImageGeneratorClient
-    database: Database
 
-    def generate_recipe(self, user_id: str, tags: list[str]):
-        recipe = self.llm_client.generate_text(recipe_prompt(tags))
-        imageUrl = self.image_generation_client.generate_image(
-            image_prompt(recipe))
+    def generate_recipe(self):
+        # TODO oppgave 2.2 - call azure and return real data
+
         unique_id = str(uuid.uuid4())
 
-        recipeData = Recipe(
+        recipe = Recipe(
             unique_id,
-            recipe,
-            imageUrl,
-            tags
+            f"""
+                Havregrøt
+
+                Ingredienser:
+
+                1 dl havregryn
+                2 dl melk/vann
+
+                Fremgangsmåte:
+                Kok opp, rør i 3-5 min.
+            """,
+            "https://placehold.co/600x400",
+            ["havregryn, melk"]
         )
 
-        return self.database.save_recipe(user_id, recipeData)
+        return recipe
