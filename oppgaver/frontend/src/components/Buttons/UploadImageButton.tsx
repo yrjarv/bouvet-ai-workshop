@@ -7,47 +7,52 @@ interface GenerateRecipeButtonProps {
 }
 
 export default function UploadImageButton({
-                                            file,
-                                            onSend,
-                                            onDone
-                                          }: GenerateRecipeButtonProps) {
+  file,
+  onSend,
+  onDone,
+}: GenerateRecipeButtonProps) {
   const uploadImage = async (file: File): Promise<string[] | undefined> => {
-      if (!file) {
-        console.log("Ingen fil valgt");
-        return [];
-      }
+    /**
+     * TODO oppgave 1.5.2
+     * Check if a file is selected
+     * If no file is selected, log "No file selected" and return an empty list
+     */
+    try {
+      const formData = new FormData();
+      formData.append("image", file);
 
-      try {
-        const formData = new FormData();
-        formData.append("image", file);
+      /**
+       * TODO oppgave 1.5.3
+       * Call the "http://127.0.0.1:5000/recognize_ingredients" endpoint using a POST request
+       * Pass the FormData object as the body of the request
+       */
 
-        const response = await fetch(
-          "http://127.0.0.1:5000/recognize_ingredients",
-          {
-            method: "POST",
-            body: formData
-          }
+      const response = await fetch("TODO", {
+        method: "TODO",
+        body: "TODO",
+      });
+      if (!response.ok) {
+        const errorJson = await response.json();
+        console.error(
+          "uploadImage failed\n",
+          "Status code: " + response.status + "\n",
+          "Error message: " + errorJson.error + "\n",
         );
-
-        if (!response.ok) {
-          const errorJson = await response.json();
-          console.error(
-            "uploadImage failed\n",
-            "Status code: " + response.status + "\n",
-            "Error message: " + errorJson.error + "\n"
-          );
-          return undefined;
-        }
-
-        const data = await response.json();
-        console.log("uploadImage Response:", data);
-        return data.ingredients;
-      } catch (error) {
-        console.error("Error during upload:", error);
         return undefined;
       }
+      /**
+       * TODO oppgave 1.5.4
+       * Convert the server response to JSON format
+       */
+
+      const data = await //TODO ;
+      console.log("uploadImage Response:", data);
+      return data.ingredients;
+    } catch (error) {
+      console.error("Error during upload:", error);
+      return undefined;
     }
-  ;
+  };
 
   const handleClick = async () => {
     if (file) {
@@ -64,12 +69,5 @@ export default function UploadImageButton({
     }
   };
 
-  return (
-    <div>
-      <button className={styles.buttons} onClick={handleClick}>
-        {" "}
-        Send
-      </button>
-    </div>
-  );
+  return <div>/* TODO Add an button with onClick event */</div>;
 }
