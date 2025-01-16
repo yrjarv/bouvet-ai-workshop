@@ -10,8 +10,6 @@ For å kunne bruke Azure-tjenestene må vi legge til API-nøkler og endepunkter 
 
 **Oppgave**
 
-1. Opprett en `.env`-fil i rooten av prosjektet.
-**Oppgave**
 
 1. Opprett en `.env`-fil i rooten av prosjektet.
 2. Legg til følgende variabler i `.env`-filen:
@@ -27,11 +25,9 @@ _Vi trenger en side i frontenden der brukerne kan laste opp bilder._
 
 **Oppgave**
 
-
 1. Naviger til app.tsx
 2. Opprett en ny route som peker til den ferdiglagde komponenten ImageUploadPage.
 
-### 1.3 Validering av filtype i SelectFileButton
 ### 1.3 Validering av filtype i SelectFileButton
 
 _SelectFileButton-komponenten er en knapp som lar brukeren velge en fil (for eksempel et bilde) fra enheten sin._
@@ -39,15 +35,12 @@ _SelectFileButton-komponenten er en knapp som lar brukeren velge en fil (for eks
 **Oppgave**
 
 1. Legg til en sjekk i knappen som sikrer at kun følgende filtyper aksepteres: .png, .jpg, .jpeg, .svg
-**Oppgave**
 
-1. Legg til en sjekk i knappen som sikrer at kun følgende filtyper aksepteres: .png, .jpg, .jpeg, .svg
-
-*Hint: Her kan man bruke accept-attributtet.*
+_Hint: Her kan man bruke accept-attributtet._
 
 ### 1.4 Backend-route for å gjenkjenne ingredienser
 
-*Når en `POST`-forespørsel sendes til `/recognize_ingredients`, skal bildet som er sendt med forespørselen behandles av Azure Custom Vision for å gjenkjenne ingredienser. Forespørselen skal inneholde et bilde, og endepunktet skal returnere ingrediensene som ble gjenkjent.*
+_Når en `POST`-forespørsel sendes til `/recognize_ingredients`, skal bildet som er sendt med forespørselen behandles av Azure Custom Vision for å gjenkjenne ingredienser. Forespørselen skal inneholde et bilde, og endepunktet skal returnere ingrediensene som ble gjenkjent._
 
 **Oppgave**
 
@@ -61,7 +54,7 @@ _SelectFileButton-komponenten er en knapp som lar brukeren velge en fil (for eks
 
 ### 1.5 Frontend – Fetch-kall
 
-*I denne oppgaven skal du gjøre endringer i UploadImageButton.tsx som ligger i button-komponenten. Komponenten er designet for at brukeren skal kunne laste opp et bilde til et API for å identifisere ingredienser. Når opplastingen er fullført, skal resultatene fra API-et vises som en liste.*
+_I denne oppgaven skal du gjøre endringer i UploadImageButton.tsx som ligger i button-komponenten. Komponenten er designet for at brukeren skal kunne laste opp et bilde til et API for å identifisere ingredienser. Når opplastingen er fullført, skal resultatene fra API-et vises som en liste._
 
 **Oppgave**
 
@@ -89,17 +82,18 @@ _I oppgave 2 skal en oppskrift genereres basert på ingrediensene som ble valgt 
 
 ### 2.1 Kall generate_recipe fra frontenden
 
-*I IngredientTagsContainer.tsx finnes det en funskjon `generateRecipe`, som skal kalles når man ønsker å sende listen med tags til backend, og generere en oppskrift. Denne funksjonen er ikke ferdig implementert*
+_I IngredientTagsContainer.tsx finnes det en funskjon `generateRecipe`, som skal kalles når man ønsker å sende listen med tags til backend, og generere en oppskrift. Denne funksjonen er ikke ferdig implementert_
 
 **Oppgave**
+
 1. Fullfør implementasjonen av `generateRecipe`. Den skal ta imot en liste av tags (`tags: string[]`), og sende disse til `/generate_recipe` endpointet.
 2. Hvis responsen er OK, konverter resultatet fra backend til JSON med `await response.json()`.
 3. Bruk oppskriften (JSON-data) fra responsen og kall `onDone`-funksjonen med oppskriften.
 
 ### 2.2 Implementer RecipeGenerator
 
-*I backend finnes det en klasse `RecipeGenerator` som er ansvarlig for å generere en oppskrift basert på en liste med
-ingredienser. Foreløpig returnerer denne klassen bare dummy-data.*
+_I backend finnes det en klasse `RecipeGenerator` som er ansvarlig for å generere en oppskrift basert på en liste med
+ingredienser. Foreløpig returnerer denne klassen bare dummy-data._
 
 #### Oppgave
 
@@ -111,7 +105,7 @@ Gjør klassen `RecipeGenerator` i stand til å:
 
 ### 2.3 Forbedre Prompten
 
-*En godt formulert prompt er avgjørende for å generere relevante og presise resultater.*
+_En godt formulert prompt er avgjørende for å generere relevante og presise resultater._
 
 #### Oppgave
 
@@ -121,9 +115,9 @@ Gjør klassen `RecipeGenerator` i stand til å:
 
 ## Oppgave 3 – DATABASEOPPGAVEN (Azure Table Service)
 
-*Nå skal vi lagre den genererte oppskriften i en database, og hente ut tidligere genererte oppskrifter og vise disse i
+_Nå skal vi lagre den genererte oppskriften i en database, og hente ut tidligere genererte oppskrifter og vise disse i
 frontend. Vi bruker Azure Table Service (en enkel NoSQL-løsning) for å
-gjøre dette.*
+gjøre dette._
 
 ---
 
