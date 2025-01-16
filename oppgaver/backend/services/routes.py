@@ -28,10 +28,7 @@ def generate_recipe():
     if 'tags' not in data or not isinstance(data['tags'], list):
         return jsonify({"error": "Missing or invalid 'tags' field "}), 400
 
-    result = recipe_gen.generate_recipe(
-        "123",  # TODO - oppgave 3.1 add a proper user id
-        data['tags']
-    )
+    result = recipe_gen.generate_recipe()
 
     if result:
         return jsonify(result)
