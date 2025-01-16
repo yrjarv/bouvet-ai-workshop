@@ -86,13 +86,10 @@ identifisere ingredienser. Når opplastingen er ferdig, skal resultatene fra API
 
 ### 2.1 Kall generate_recipe fra frontenden
 
-*generateRecipe i IngredientTagsContainer.tsx er en fetchkall som sender en liste med ingredienser (tags) til backend
-for å generere oppskrift. Funskjonen håndterer feil og logger relevante data. Når responsen fra backend er mottatt, skal
-oppskriften returneres som JSON og `onDone` kalles med dataen.*
+*I IngredientTagsContainer.tsx finnes det en funskjon `generateRecipe`, som skal kalles når man ønsker å sende listen med tags til backend, og generere en oppskrift. Denne funksjonen er ikke ferdig implementert*
 
 **Oppgave**
-
-1. Lag en asynkron funksjon kalt `generateRecipe` som tar imot en liste av tags (`tags: string[]`).
+1. Fullfør implementasjonen av `generateRecipe`. Den skal ta imot en liste av tags (`tags: string[]`), og sende disse til `/generate_recipe` endpointet.
 2. Hvis responsen er OK, konverter resultatet fra backend til JSON med `await response.json()`.
 3. Bruk oppskriften (JSON-data) fra responsen og kall `onDone`-funksjonen med oppskriften.
 
