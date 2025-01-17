@@ -1,6 +1,6 @@
 ## Oppgave 1 – OBJECT RECOGNITION
 
-_Azure Custom Vision blir brukt for å gjenkjenne objekter (ingredienser) i et bilde. For å få til dette skal vi sette opp .env-fil, backend-route, og koble tdette til frontend._
+_I oppgave 1 skal vi bruke Azure Custom Vision for å gjenkjenne objekter (ingredienser) i et bilde. For å få til dette skal vi sette opp .env-fil, backend-route, og koble tdette til frontend._
 
 ---
 
@@ -11,20 +11,20 @@ For å kunne bruke Azure-tjenestene må vi legge til API-nøkler og endepunkter 
 **Oppgave**
 
 1. Opprett en `.env`-fil i rooten av prosjektet.
-2. Legg til følgende variabler i `.env`-filen:
+2. Klikk på lenken under og kopier variablene.
+   - https://secret-service.bouvet.no/#/s/9115ef80-8f64-4baa-b9fb-8af871938228/3Jtu1eX6laqsAPMCCSj2ZX)
+4. Legg til variablene i `.env`-filen
 
-```
-https://secret-service.bouvet.no/#/s/b2bccb4a-bc16-484a-a6c7-4dd44ec5e9e0
-```
+
 
 ### 1.2 Opprett en route i Frontend for å vise hjemsiden
 
-_Vi trenger en side i frontenden der brukerne kan laste opp bilder._
+_Den ferdiglagde komponenten ImageUploadPage viser en side i frontenden der brukerne kan laste opp bilder. Vi skal nå sette opp en route som viser denne som hjemmesiden_
 
 **Oppgave**
 
 1. Naviger til app.tsx
-2. Opprett en ny route som peker til den ferdiglagde komponenten ImageUploadPage.
+2. Opprett en ny route som peker til komponenten ImageUploadPage.
 
 ### 1.3 Validering av filtype i SelectFileButton
 
@@ -42,9 +42,11 @@ _Når en `POST`-forespørsel sendes til `/recognize_ingredients`, skal bildet so
 
 **Oppgave**
 
-1.  Lag et nytt endepunkt i `routes.py` som tar imot bildet.
-2.  Finn ut hvilken klasse som må brukes for å kalle Custom Vision i Azure.
-3.  Returner en JSON-formatert liste med ingredienser, for eksempel:
+1.  Oppdater endepunktet i routes.py for å motta bildet:
+     - Metode: `POST`-forespørsel
+     - URL:`/recognize_ingredients`
+3.  Finn ut hvilken klasse som må brukes for å kalle Custom Vision i Azure.
+4.  Returner en JSON-formatert liste med ingredienser, for eksempel:
 
 ```json
 ["paprika", "onion", "fish oil"]
@@ -52,7 +54,7 @@ _Når en `POST`-forespørsel sendes til `/recognize_ingredients`, skal bildet so
 
 ### 1.5 Frontend – Fetch-kall
 
-_I denne oppgaven skal du gjøre endringer i UploadImageButton.tsx som ligger i button-komponenten. Komponenten er designet for at brukeren skal kunne laste opp et bilde til et API for å identifisere ingredienser. Når opplastingen er fullført, skal resultatene fra API-et vises som en liste._
+_I denne oppgaven skal du gjøre et fetch-kall i UploadImageButton.tsx. Komponenten er designet for at brukeren skal kunne laste opp et bilde til et API for å identifisere ingredienser. Når opplastingen er fullført, skal resultatene fra API-et vises som en liste._
 
 **Oppgave**
 
@@ -107,8 +109,8 @@ _En godt formulert prompt er avgjørende for å generere relevante og presise re
 
 #### Oppgave
 
-- Gå gjennom eksisterende tekst i prompten i `recipe_generator.py`.
-- Sørg for at prompten er klar, spesifikk og inkluderer all nødvendig kontekst for å generere en oppskrift av høy
+1. Gå gjennom eksisterende tekst i prompten i `recipe_generator.py`.
+2. Sørg for at prompten er klar, spesifikk og inkluderer all nødvendig kontekst for å generere en oppskrift av høy
   kvalitet.
 
 ## Oppgave 3 – DATABASEOPPGAVEN (Azure Table Service)
@@ -123,22 +125,21 @@ gjøre dette._
 
 ### Oppgave
 
-Etter `generate_recipe` er ferdig med å generere en oppskrift,
 Når generate_recipe kjører, bruk save_recipe for å sende dataene til databasen. Denne funksjonen tar to argumenter.
 Først, oppskriften, som vi allerede har, og nummer to, en unik bruker-id `user_id`. Finn funksjonen `useUserId()` i
 frontend, og bruk denne til å sende med `user_id` i `generate_recipe` requesten.
 
 ### 3.3 Hent ut oppskrifter – get_recipes
 
-Om Forrige steg er gjort riktig, skal
-oppskriftene dine ligge i Azure Table Service, og det er nå mulig å skrive en funskjon for å hente ut alle oppskrifter
-som tilhører deg, og vise disse i frontend.
+*Om Forrige steg er gjort riktig, skal oppskriftene dine ligge i Azure Table Service, og det er nå mulig å skrive en funskjon for å hente ut alle oppskrifter
+som tilhører deg, og vise disse i frontend.*
 
 ### Oppgave
 
 I database.py finnes det en funksjon `get_recipes`. Denne er delvis implementert, og gjør følgende:
 
-- lager en query som spør etter alle oppskrifter som matcher din `user_id`
-- kaller Azure klienten for å hente ut dataen
+1.Lag en query som spør etter alle oppskrifter som matcher din `user_id`.
+
+2.Kall på Azure klienten for å hente ut dataen.
 
 For å fullføre funksjonen, må du iterere over dataene, og returnere en liste over oppskrifter.
