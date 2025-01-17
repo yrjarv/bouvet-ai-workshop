@@ -10,13 +10,11 @@ For å kunne bruke Azure-tjenestene må vi legge til API-nøkler og endepunkter 
 
 **Oppgave**
 
-
 1. Opprett en `.env`-fil i rooten av prosjektet.
 2. Legg til følgende variabler i `.env`-filen:
 
 ```
-AZURE_ENDPOINT="https://dummy_endpoint.cognitiveservices.azure.com/"
-AZURE_API_KEY="dummy_api_key_goes_here"
+https://secret-service.bouvet.no/#/s/b2bccb4a-bc16-484a-a6c7-4dd44ec5e9e0
 ```
 
 ### 1.2 Opprett en route i Frontend for å vise hjemsiden
