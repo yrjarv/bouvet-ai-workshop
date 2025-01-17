@@ -12,7 +12,7 @@ For å kunne bruke Azure-tjenestene må vi legge til API-nøkler og endepunkter 
 
 1. Opprett en `.env`-fil i rooten av prosjektet.
 2. Klikk på lenken under og kopier variablene.
-   - https://secret-service.bouvet.no/#/s/9115ef80-8f64-4baa-b9fb-8af871938228/3Jtu1eX6laqsAPMCCSj2ZX)
+   - https://secret-service.bouvet.no/#/s/5fa9ab68-3aa5-4586-b37f-121778cfc0cf/z9Cs45i4pZyqKQ6juXiFxW
 4. Legg til variablene i `.env`-filen
 
 
