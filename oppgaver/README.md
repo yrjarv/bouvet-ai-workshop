@@ -1,3 +1,59 @@
+## 🚀 Kom i gang
+
+### 1. Klon repoet
+
+### Backend
+
+Følg disse trinnene for å sette opp og kjøre backend:
+
+
+1. **Naviger til Backend-mappen**  
+   Åpne en terminal og naviger til oppgaver-mappen, deretter backend-mappen:
+   ```bash
+   cd oppgaver/backend
+   ```
+2. **Opprett et virtuelt miljø**
+   ```bash
+   python3 -m venv .venv
+   ```
+3. **Aktiver et virtuelt miljø**
+   ```bash
+   (Mac/linux) source .venv/bin/activate
+   (Windows) .venv\Scripts\activate
+   ```
+4. **Installer nødvendige Python-pakker**
+   ```bash
+   pip3 install -r requirements.txt
+   ```
+5. **Kjør Flask server**
+
+   ```bash
+   flask run
+
+   ```
+
+### Frontend
+
+Follow these steps to set up and run the frontend:
+
+1. **Navigate to the Frontend Folder**
+   Open a terminal and navigate to the `frontend` directory:
+
+   ```bash
+   cd frontend
+
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+3. Run dev server
+   ```bash
+   npm run dev
+   ```
+
+
 ## Oppgave 1 – OBJECT RECOGNITION
 
 _I oppgave 1 skal vi bruke Azure Custom Vision for å gjenkjenne objekter (ingredienser) i et bilde. For å få til dette skal vi sette opp .env-fil, backend-route, og koble tdette til frontend._
@@ -10,9 +66,9 @@ For å kunne bruke Azure-tjenestene må vi legge til API-nøkler og endepunkter 
 
 **Oppgave**
 
-1. Opprett en `.env`-fil i rooten av prosjektet.
+1. Opprett en `.env`-fil i rooten på backend prosjektet.
 2. Klikk på lenken under og kopier variablene.
-   - https://secret-service.bouvet.no/#/s/5fa9ab68-3aa5-4586-b37f-121778cfc0cf/z9Cs45i4pZyqKQ6juXiFxW
+   - https://secret-service.bouvet.no/#/s/4e8f4a81-d8e1-4126-b603-021bba75d6b5/051XQIqqfT40JXF2bTZRdS
 4. Legg til variablene i `.env`-filen
 
 
@@ -31,18 +87,19 @@ _Den ferdiglagde komponenten ImageUploadPage viser en side i frontenden der bruk
 _SelectFileButton-komponenten er en knapp som lar brukeren velge en fil (for eksempel et bilde) fra enheten sin._
 
 **Oppgave**
-
-1. Legg til en sjekk i knappen som sikrer at kun følgende filtyper aksepteres: .png, .jpg, .jpeg, .svg
+1. Naviger til components/Buttons/SelectFileButton
+2. Legg til en sjekk i knappen som sikrer at kun følgende filtyper aksepteres: .png, .jpg, .jpeg
+    - Kontrollen skal også sørge for at filtypene er i små bokstaver (lowercase).
 
 _Hint: Her kan man bruke accept-attributtet._
 
 ### 1.4 Backend-route for å gjenkjenne ingredienser
 
 _Når en `POST`-forespørsel sendes til `/recognize_ingredients`, skal bildet som er sendt med forespørselen behandles av Azure Custom Vision for å gjenkjenne ingredienser. Forespørselen skal inneholde et bilde, og endepunktet skal returnere ingrediensene som ble gjenkjent._
-
+hvor er den???
 **Oppgave**
-
-1.  Oppdater endepunktet i routes.py for å motta bildet:
+1. Naviger til services/routes.py
+2.  Oppdater endepunktet i routes.py for å motta bildet:
      - Metode: `POST`-forespørsel
      - URL:`/recognize_ingredients`
 3.  Finn ut hvilken klasse som må brukes for å kalle Custom Vision i Azure.
@@ -55,6 +112,7 @@ _Når en `POST`-forespørsel sendes til `/recognize_ingredients`, skal bildet so
 ### 1.5 Frontend – Fetch-kall
 
 _I denne oppgaven skal du gjøre et fetch-kall i UploadImageButton.tsx. Komponenten er designet for at brukeren skal kunne laste opp et bilde til et API for å identifisere ingredienser. Når opplastingen er fullført, skal resultatene fra API-et vises som en liste._
+hvor er den??
 
 **Oppgave**
 
