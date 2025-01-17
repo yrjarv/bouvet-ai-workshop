@@ -15,6 +15,7 @@ routes = Blueprint('routes', __name__)
 ocr = ImageRecognitionClient()
 llm = LangueModelClient()
 img_gen = ImageGeneratorClient()
+database = Database()
 
 recipe_gen = RecipeGenerator(ocr, llm, img_gen)
 
