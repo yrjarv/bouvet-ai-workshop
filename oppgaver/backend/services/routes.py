@@ -36,7 +36,7 @@ def generate_recipe():
     else:
         return jsonify({'error': 'Failed to generate recipe'}), 404
 
-# TODO: Define the correct route URL and HTTP method (POST)
+# TODO 1.3.2: Define the correct route URL and HTTP method (POST)
 @routes.route('TODO', methods=['TODO'])
 def recognize_ingredients():
     if 'image' not in request.files:
@@ -44,16 +44,15 @@ def recognize_ingredients():
 
     file: FileStorage = request.files['image']
 
-
     if not file.filename.endswith(('.jpg', '.jpeg', '.png')):
         return jsonify({"error": "Invalid file type"}), 400
 
     try:
         file_stream = BytesIO(file.read())
-        # TODO: Find out which class and method from Azure Custom Vision to use
+        # TODO 1.3.3: Find out which class and method from Azure Custom Vision to use
         ingredients = "TODO"
         if ingredients:
-        # TODO: Return a JSON response containing the recognized ingredients
+        # TODO 1.3.4: Return a JSON response containing the recognized ingredients
             return "todo", 200
         else:
             return jsonify({"error": "No ingredients found in the image"}), 200
@@ -63,7 +62,7 @@ def recognize_ingredients():
 
 @routes.route('/recipes', methods=['GET'])
 def list_recipes():
-    user_id = request.args.get('user_id')
+    user_id = request.args.get('userId')
 
     if not user_id:
         return jsonify({"error": "user_id query parameter is required"}), 400

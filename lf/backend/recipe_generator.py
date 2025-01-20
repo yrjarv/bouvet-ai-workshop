@@ -1,8 +1,5 @@
 from dataclasses import dataclass
 
-from werkzeug.datastructures import FileStorage
-
-from clients.database import Database
 from clients.image_generator_client import ImageGeneratorClient
 from clients.image_recognition_client import ImageRecognitionClient
 from clients.llm_client import LangueModelClient
@@ -47,9 +44,8 @@ class RecipeGenerator:
     image_recognition_client: ImageRecognitionClient
     llm_client: LangueModelClient
     image_generation_client: ImageGeneratorClient
-    database: Database
 
-    def generate_recipe(self, user_id: str, tags: list[str]):
+    def generate_recipe(self, tags: list[str]):
         recipe = self.llm_client.generate_text(recipe_prompt(tags))
         imageUrl = self.image_generation_client.generate_image(
             image_prompt(recipe))
@@ -62,4 +58,4 @@ class RecipeGenerator:
             tags
         )
 
-        return self.database.save_recipe(user_id, recipeData)
+        return recipeData

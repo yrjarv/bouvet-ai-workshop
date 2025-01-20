@@ -14,7 +14,7 @@ export function RecipeListPage() {
     const fetchRecipes = async () => {
       try {
         const response = await fetch(
-          "http://127.0.0.1:5000/recipes?user_id=" + userId
+          "http://127.0.0.1:5000/recipes?userId=" + userId
         );
 
         if (!response.ok) {

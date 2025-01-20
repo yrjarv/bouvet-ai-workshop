@@ -15,13 +15,29 @@ class Database:
         self.client = service.get_table_client(table_name="recipes")
 
     def save_recipe(self, user_id: str, recipe: Recipe) -> Recipe:
-        entity = asdict(recipe)
 
+        if not recipe.imageUrl:
+            raise Exception("save_recipe failed: imageUrl is null")
+        if not recipe.recipeText:
+            raise Exception("save_recipe failed: recipeText is null")
+        if not recipe.ingredients:
+            raise Exception("save_recipe failed: ingredients is null")
+        if not recipe.id:
+            raise Exception("save_recipe failed: id is null")
+        if not user_id:
+            raise Exception("save_recipe failed: user_id is null")
+
+        entity = dict()
+        entity["imageUrl"] = recipe.imageUrl
+        entity["recipeText"] = recipe.recipeText
+        entity["id"] = recipe.id
+        entity["ingredients"] = ",".join(recipe.ingredients)
+
+        # PartitionKey and RowKey are required by Azure Table Service to organize and index data.
+        # PartitionKey groups related entities (in this case, all recipes for a specific user),
+        # and RowKey uniquely identifies each entity within that partition.
         entity["PartitionKey"] = user_id
         entity["RowKey"] = recipe.id
-
-        entity["user_id"] = user_id
-        entity["ingredients"] = ",".join(entity["ingredients"])
 
         self.client.create_entity(entity)
 
