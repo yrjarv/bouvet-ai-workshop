@@ -186,13 +186,15 @@ gjøre dette._
 
 ### 3.1 Lagring av resultatet
 
+`database.py` inneholder funksjoner for å bruke Azure Table Service databasen. Vi skal først fullføre funksjonen for å lagre oppskrifter i databasen.
+
 ### Oppgave
 
-Når generate_recipe kjører, bruk save_recipe for å sende dataene til databasen. Denne funksjonen tar to argumenter.
+Etter en oppskrift er fullført generert, bruk `save_recipe` for å sende dataene til databasen. Denne funksjonen tar to argumenter.
 Først, oppskriften, som vi allerede har, og nummer to, en unik bruker-id `user_id`. Finn funksjonen `useUserId()` i
 frontend, og bruk denne til å sende med `user_id` i `generate_recipe` requesten.
 
-### 3.3 Hent ut oppskrifter – get_recipes
+### 3.2 Hent ut oppskrifter – get_recipes
 
 _Om Forrige steg er gjort riktig, skal oppskriftene dine ligge i Azure Table Service, og det er nå mulig å skrive en funskjon for å hente ut alle oppskrifter
 som tilhører deg, og vise disse i frontend._
@@ -201,8 +203,10 @@ som tilhører deg, og vise disse i frontend._
 
 I database.py finnes det en funksjon `get_recipes`. Denne er delvis implementert, og gjør følgende:
 
-1.Lag en query som spør etter alle oppskrifter som matcher din `user_id`.
+1. Lag en query som spør etter alle oppskrifter som matcher din `user_id`.
 
-2.Kall på Azure klienten for å hente ut dataen.
+2. Kall på Azure klienten for å hente ut dataen.
 
 For å fullføre funksjonen, må du iterere over dataene, og returnere en liste over oppskrifter.
+
+Dersom alt er gjort riktig, skal dine oppskrifter nå lagres etter de er fullført generert. Når man navigerer til `Mine Oppskrifter` taben i frontend, skal man se alle oppskrifter man har generert tidligere.
