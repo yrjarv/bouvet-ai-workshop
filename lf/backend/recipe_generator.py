@@ -1,8 +1,5 @@
 from dataclasses import dataclass
 
-from werkzeug.datastructures import FileStorage
-
-from clients.database import Database
 from clients.image_generator_client import ImageGeneratorClient
 from clients.image_recognition_client import ImageRecognitionClient
 from clients.llm_client import LangueModelClient

@@ -1,8 +1,5 @@
 from dataclasses import dataclass
 
-from werkzeug.datastructures import FileStorage
-
-from clients.database import Database
 from clients.image_generator_client import ImageGeneratorClient
 from clients.image_recognition_client import ImageRecognitionClient
 from clients.llm_client import LangueModelClient
@@ -12,30 +9,21 @@ import uuid
 
 def recipe_prompt(ingredients: list[str]):
     return f"""
-You are a master chef.
-            Please create a recipe based on the following ingredients. The following ingredient(s) is all that i have in my fridge: {", ".join(ingredients)}.
+You are a bad chef.
+Please create some sort of recipe based on the following ingredients.
+Don't bother being clever or precise—just wing it.
+The following ingredient(s) is all that i have in my fridge: {", ".join(ingredients)}.
 
 Requirements:
-- Provide a short, catchy recipe name.
 - First line of the output is the recipe name
-- Provide only the recipe, no extra chit chat
-- Be snarky about the state of the users fridge
-- Include a brief introduction or backstory (one or two sentences).
-- List ingredients with approximate measurements, in metric.
-- Provide step-by-step cooking instructions.
-- Suggest additional tips, serving suggestions, or variations.
-- Include estimated prep and cook times.
-- Assume the user doesnt have much more than the provided ingredients, apart from some very basic pantry items
 - The output should be formatted in markdown
-
-Keep it clear, concise, and fun to read.
 """
 
 
 def image_prompt(recipe: str):
     return f"""
-        Create a beautiful image of the dish described in this recipe.
-        This is only a photo of food!
+        Just slap together some low-effort, boring photo of the dish described in this recipe.
+        Seriously, don't try too hard. No fancy plating or lighting—make it dull.
 
         RECIPE:
         {recipe}
