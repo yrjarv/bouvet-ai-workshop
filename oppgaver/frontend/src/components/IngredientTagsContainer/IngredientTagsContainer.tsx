@@ -48,12 +48,13 @@ export default function IngredientTagsContainer({
   };
 
   const generateRecipe = async (tags: string[]) => {
-    /*
-     * TODO oppgave 2.1
-     *  call generate_recipe endpoint
-     *  make loading spinner show when this runs
-     */
+    setLoading();
+  
     try {
+       /*
+     * TODO oppgave 2.1.2
+     *  call generate_recipe endpoint
+     */
 
     } catch(error) {
       console.error("Error sending tags to backend:", error);

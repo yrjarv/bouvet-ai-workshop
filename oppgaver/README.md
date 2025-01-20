@@ -8,12 +8,23 @@ For å kunne bruke Azure-tjenestene må vi legge til API-nøkler og endepunkter 
 
 _Slik gjør du:_
 
-1. Opprett en `.env`-fil i rooten på backend-prosjektet.
-2. Klikk på lenken under og kopier variablene.
+1. **Naviger til Backend-mappen**
+
+Åpne en terminal og naviger til oppgaver-mappen, deretter backend-mappen:
+
+```bash
+cd oppgaver/backend
+```
+
+2. Opprett en `.env`-fil i rooten på backend-prosjektet.
+
+3. Klikk på lenken under og kopier alt.
    - https://secret-service.bouvet.no/#/s/4e8f4a81-d8e1-4126-b603-021bba75d6b5/051XQIqqfT40JXF2bTZRdS
-3. Legg til variablene i `.env`-filen
+4. Lim inn i `.env`-filen
 
 ### 3. Kjør prosjektet
+
+For å kjøre prosjektet anbefales det å bruke to separate terminaler: én for frontend og én for backend.
 
 ### Backend
 
@@ -44,6 +55,8 @@ Følg disse trinnene for å sette opp og kjøre backend:
 
    ```
 
+_Første gang prosjektet kjøres, vil kommandoen "flask run" gi en feilmelding. Dette skyldes at det gjenstår noen oppgaver som må fullføres for at den skal fungere som forventet._
+
 ### Frontend
 
 Følg disse trinnene for å sette opp og kjøre frontend:
@@ -52,7 +65,7 @@ Følg disse trinnene for å sette opp og kjøre frontend:
    Open a terminal and navigate to the `frontend` directory:
 
    ```bash
-   cd frontend
+   cd oppgaver/frontend
 
    ```
 
@@ -65,7 +78,7 @@ Følg disse trinnene for å sette opp og kjøre frontend:
    npm run dev
    ```
 
-## Oppgave 1 – OBJEKTGJENKJENNING
+## Oppgave 1 – OBJEKTGJENKJENNING 🔍
 
 _I oppgave 1 skal vi bruke Azure Custom Vision for å gjenkjenne objekter (ingredienser) i et bilde. For å få til dette skal vi sette opp .env-fil, backend-route, og koble tdette til frontend._
 
@@ -77,8 +90,8 @@ _Den ferdiglagde komponenten ImageUploadPage viser en side i frontenden der bruk
 
 **Oppgave**
 
-1. Naviger til app.tsx
-2. Opprett en ny route som peker til komponenten ImageUploadPage.
+1. Naviger til `app.tsx`
+2. Opprett en ny route med `path= "/ "` som peker til komponenten **ImageUploadPage**.
 
 Når du har fullført oppgaven, skal **ImageUploadPage** vises på skjermen.
 
@@ -113,31 +126,46 @@ _Når en `POST`-forespørsel sendes til `/recognize_ingredients`, skal bildet so
 ["paprika", "onion", "fish oil"]
 ```
 
+Når oppgaven er fullført, skal det være mulig å kjøre kommandoen `flask run` i backend-terminalen uten at det gir feilmelding. Husk å kjør kommandoen i `cd oppgaver/backend`
+
 ### 1.4 Frontend – Fetch-kall
 
 _I denne oppgaven skal du gjøre et fetch-kall i UploadImageButton.tsx. Komponenten er designet for at brukeren skal kunne laste opp et bilde til et API for å identifisere ingredienser. Når opplastingen er fullført, skal resultatene fra API-et vises som en liste._
 
 **Oppgave**
 
-1.  **Opprett en knapp**:  
-     Opprett en knapp med teksten "Send" og tilordne den CSS-klassen className={styles.buttons}.
-2.  **Håndter knappens funksjonalitet**:
+1.  **Naviger**:
+
+    Naviger til `cd Buttons/UploadImageButton.tsx`
+
+2.  **Last opp et bilde av kjøleskapet**:
+
+    Last opp et bilde av et kjøleskap med ingredienser. Hvis du ikke har et slikt bilde, kan du også bruke et bilde fra internett.
+
+3.  **Opprett en knapp**:
+
+    Opprett en knapp med teksten "Send" og tilordne den CSS-klassen className={styles.buttons}.
+
+4.  **Håndter knappens funksjonalitet**:
+
     Når brukeren klikker på knappen, skal bildet som er valgt lastes opp til API-et.  
      _Hint: Bruk `onClick`._
-3.  **Sjekk om en fil er valgt**:
+
+5.  **Sjekk om en fil er valgt**:
+
     Hvis ingen fil er valgt, logg meldingen "ingen fil er valgt" og returner en tom liste.
 
-4.  **Lag API-kall**:  
+6.  **Lag API-kall**:  
      Bruk et POST-kall til følgende URL:  
      `http://127.0.0.1:5000/recognize_ingredients`.  
-     Bildet skal sendes som FormData med nøkkelen `"image"`.
+     Bildet skal sendes som `formData`.
 
-5.  **Konverter responsen til JSON-format**:
+7.  **Konverter responsen til JSON-format**:
     Konverter responsen fra serveren til å være JSON-format
 
 Når du har fullført oppgaven, skal det være mulig å klikke på knappen, og de identifiserte ingrediensene vil bli vist.
 
-## Oppgave 2 – INNHOLDSGENERERING
+## Oppgave 2 – INNHOLDSGENERERING 🧠
 
 _I oppgave 2 skal en oppskrift genereres basert på ingrediensene som ble valgt i forrige steg._
 
@@ -149,9 +177,23 @@ _I IngredientTagsContainer.tsx finnes det en funskjon `generateRecipe`, som skal
 
 **Oppgave**
 
-1. Fullfør implementasjonen av `generateRecipe`. Den skal ta imot en liste av tags (`tags: string[]`), og sende disse til `/generate_recipe` endpointet.
-2. Hvis responsen er OK, konverter resultatet fra backend til JSON med `await response.json()`.
-3. Bruk oppskriften (JSON-data) fra responsen og kall `onDone`-funksjonen med oppskriften.
+Fullfør implementasjonen av `generateRecipe`. Den tar imot en liste av tags (`tags: string[]`), og skal sende disse til `/generate_recipe` endpointet.
+
+1. **Naviger**
+   Naviger til `cd IngredientsTagsContainer/IngredientTagsContainer.tsx`
+2. **Lag API-kall**
+
+   Bruk et POST-kall til følgende URL:
+   `http://localhost:5000/generate_recipe`
+
+   Headeren skal inneholde: { "Content-Type": "application/json" }
+
+   Bodyen skal inneholde tags som er konvertert til JSON.
+
+3. Hvis responsen er OK, konverter resultatet fra backend til JSON med `await response.json()`.
+4. Bruk oppskriften (JSON-data) fra responsen og kall `onDone`-funksjonen med oppskriften.
+
+Når du har fullført oppgavene, vil du bli navigert til en ny side i applikasjonen, som viser en default visning av havregrøt.
 
 ### 2.2 Implementer RecipeGenerator
 
@@ -160,11 +202,22 @@ ingredienser. Foreløpig returnerer denne klassen bare dummy-data._
 
 #### Oppgave
 
-Gjør klassen `RecipeGenerator` i stand til å:
+I denne oppgaven skal du endre klassen `RecipeGenerator` slik at den kan generere en oppskrift.
 
-1. Ta imot en liste med ingredienser som input.
-2. Kalle alle nødvendige Azure-tjenester for å generere en oppskrift.
-3. Returnere en komplett og strukturert oppskrift som resultat.
+1. **Naviger**
+
+   Naviger til `cd recipe_generator.py`
+
+2. **Ta imot en liste med ingredienser som input**
+
+3. **Kalle på Azure-tjenester**
+
+   Kalle alle nødvendige Azure-tjenester for å generere en oppskrift.
+   _Hint: Her trenger man innholdsgenerering og bildegenerering_
+
+4. Returnere en komplett og strukturert oppskrift som resultat.
+
+   _Hint: Her skal man erstatte defaulten med havregrøt_
 
 ### 2.3 Forbedre Prompten
 
@@ -176,7 +229,7 @@ _En godt formulert prompt er avgjørende for å generere relevante og presise re
 2. Sørg for at prompten er klar, spesifikk og inkluderer all nødvendig kontekst for å generere en oppskrift av høy
    kvalitet.
 
-## Oppgave 3 – DATABASEOPPGAVEN (Azure Table Service)
+## Bonusoppgave 3 – Databaseoppgaven (Azure Table Service) 🎉
 
 _Nå skal vi lagre den genererte oppskriften i en database, og hente ut tidligere genererte oppskrifter og vise disse i
 frontend. Vi bruker Azure Table Service (en enkel NoSQL-løsning) for å
