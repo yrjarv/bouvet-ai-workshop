@@ -17,7 +17,7 @@ llm = LangueModelClient()
 img_gen = ImageGeneratorClient()
 database = Database()
 
-recipe_gen = RecipeGenerator(ocr, llm, img_gen, database)
+recipe_gen = RecipeGenerator(ocr, llm, img_gen)
 
 
 @routes.route('/generate_recipe', methods=['POST'])
@@ -29,13 +29,12 @@ def generate_recipe():
     print("request data", data)
     if 'tags' not in data or not isinstance(data['tags'], list):
         return jsonify({"error": "Missing or invalid 'tags' field "}), 400
-    if 'userId' not in data or not isinstance(data['userId'], str):
-        return jsonify({"error": "Missing or invalid 'userId' field "}), 400
 
     result = recipe_gen.generate_recipe(
-        data['userId'],
         data['tags']
     )
+
+    database.save_recipe(data['userId'], result)
 
     if result:
         return jsonify(result)
@@ -66,7 +65,7 @@ def recognize_ingredients():
 
 @routes.route('/recipes', methods=['GET'])
 def list_recipes():
-    user_id = request.args.get('user_id')
+    user_id = request.args.get('userId')
 
     if not user_id:
         return jsonify({"error": "user_id query parameter is required"}), 400
