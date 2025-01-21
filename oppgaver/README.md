@@ -55,21 +55,21 @@ Følg disse trinnene for å sette opp og kjøre backend:
 
    ```
 
-_Første gang prosjektet kjøres, vil kommandoen "flask run" gi en feilmelding. Dette skyldes at det gjenstår noen oppgaver som må fullføres for at den skal fungere som forventet._
+*🚨 Første gang prosjektet kjøres, vil kommandoen "flask run" gi en feilmelding. Dette skyldes at det gjenstår noen oppgaver som må fullføres for at den skal fungere som forventet🚨*
 
 ### Frontend
 
 Følg disse trinnene for å sette opp og kjøre frontend:
 
-1. **Navigate to the Frontend Folder**
-   Open a terminal and navigate to the `frontend` directory:
+1. **Naviger til Frontend-mappen**
+  Åpne en terminal og naviger til `frontend`-mappen:
 
    ```bash
    cd oppgaver/frontend
 
    ```
 
-2. **Install dependencies**
+2. **Installer avhengigheter**
    ```bash
    npm install
    ```
@@ -80,7 +80,7 @@ Følg disse trinnene for å sette opp og kjøre frontend:
 
 ## Oppgave 1 – OBJEKTGJENKJENNING 🔍
 
-_I oppgave 1 skal vi bruke Azure Custom Vision for å gjenkjenne objekter (ingredienser) i et bilde. For å få til dette skal vi sette opp .env-fil, backend-route, og koble tdette til frontend._
+_I oppgave 1 skal vi bruke Azure Custom Vision for å gjenkjenne objekter (ingredienser) i et bilde. For å få til dette skal vi sette opp .env-fil, backend-route, og koble dette til frontend._
 
 ---
 
@@ -90,8 +90,8 @@ _Den ferdiglagde komponenten ImageUploadPage viser en side i frontenden der bruk
 
 **Oppgave**
 
-1. Naviger til `app.tsx`
-2. Opprett en ny route med `path= "/ "` som peker til komponenten **ImageUploadPage**.
+1. Naviger til `App.tsx`, som ligger i `src`-mappen.
+2. Opprett en ny route med `path= "/"` som peker til komponenten **ImageUploadPage**.
 
 Når du har fullført oppgaven, skal **ImageUploadPage** vises på skjermen.
 
