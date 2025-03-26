@@ -1,0 +1,124 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 470px;
+  background-color: #c3d5e1;
+  text-align: center;
+  position: relative;
+  border-radius: 8px;
+  padding: 20px 15px;
+  box-sizing: border-box;
+}
+
+.container p {
+  font-size: 16px;
+  color: #333;
+  font-weight: 400;
+  line-height: 1.5;
+  margin-bottom: 30px;
+  padding-top: 20px;
+  text-align: center;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 15px;
+  border: 1px solid #dcdfe4;
+  border-radius: 20px;
+  background-color: #e9eff5;
+  color: #333;
+  font-size: 14px;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.tag:hover {
+  background-color: #d0d8e5;
+  transform: scale(1.05);
+}
+
+.deleteButton {
+  margin-left: 12px;
+  background: none;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 50%;
+  padding: 2px 6px;
+  transition:
+    color 0.3s ease,
+    transform 0.2s ease;
+}
+
+.deleteButton:hover {
+  color: #ff6b6b;
+}
+
+.inputContainer {
+  display: flex;
+  gap: 12px;
+  margin-top: 15px;
+  width: 100%;
+  justify-content: center;
+}
+
+.inputField {
+  padding: 10px;
+  border: 1px solid #dcdfe4;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 280px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+.inputField:focus {
+  border-color: #11133c;
+  outline: none;
+}
+
+.addButton {
+  padding: 10px 15px;
+  background-color: #11133c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
+}
+
+.addButton:hover {
+  background-color: #82839b;
+  transform: s cale(1.05);
+}
+.sendButton {
+  padding: 10px 15px;
+  background-color: dcdfe4;
+  color: #11133c;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
+}
