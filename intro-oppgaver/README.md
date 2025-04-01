@@ -91,7 +91,8 @@ _Den ferdiglagde komponenten ImageUploadPage viser en side i frontenden der bruk
 **Oppgave**
 
 1. Naviger til `App.tsx`, som ligger i `src`-mappen.
-2. Opprett en ny route med `path= "/"` som peker til komponenten **ImageUploadPage**.
+2. Legg til en ny route med en tom path ("/") slik at ImageUploadPage blir hovedsiden.
+3. Husk å importere ImageUploadPage.
 
 Når du har fullført oppgaven, skal **ImageUploadPage** vises på skjermen.
 
@@ -112,7 +113,7 @@ Når oppgaven er fullført, skal det kun være mulig å laste opp filer med form
 ### 1.3 Endre bakgrunnsfarge
 
 1. Naviger til ` cd styles/index.css `
-2. Nå er bakgrunnen hvit, endre den til favorittfargen din
+2. Bakgrunnen er nå hvit – bytt den til din favorittfarge!
 
 
 ### 1.4 Lag en knapp 
