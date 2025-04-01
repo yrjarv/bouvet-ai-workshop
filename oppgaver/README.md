@@ -91,7 +91,8 @@ _Den ferdiglagde komponenten ImageUploadPage viser en side i frontenden der bruk
 **Oppgave**
 
 1. Naviger til `App.tsx`, som ligger i `src`-mappen.
-2. Opprett en ny route med `path= "/"` som peker til komponenten **ImageUploadPage**.
+2. Legg til en ny route med en tom path ("/") slik at ImageUploadPage blir hovedsiden.
+3. Husk å importere ImageUploadPage.
 
 Når du har fullført oppgaven, skal **ImageUploadPage** vises på skjermen.
 
