@@ -20,7 +20,7 @@ class LangueModelClient:
                         "content": prompt,
                     }
                 ],
-                model="gpt-4o-mini",
+                model="PUT_YOUR_MODEL_HERE",  # TODO: oppgave 2.2.2 Sett riktig modell her
             )
             return chat_completion.choices[0].message.content
         

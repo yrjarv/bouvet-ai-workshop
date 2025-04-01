@@ -6,7 +6,6 @@ import { useState } from "react";
 import Recipe from "./model/Recipe.tsx";
 import { RecipeListPage } from "./pages/recipes/RecipeListPage.tsx";
 import Navbar from "./components/Navbar/Navbar.tsx";
-import { ImageUploadPage } from "./pages/ImageUpload/ImageUploadPage.tsx";
 import { RecipePage } from "./pages/recipe/RecipePage.tsx";
 
 function App() {
@@ -22,7 +21,7 @@ function App() {
 
           <div className="content">
             <Routes>
-              <Route path="/" element={<ImageUploadPage />} />
+              /*TODO: Add route for ImageUploadPage*/
               <Route path="/recipes" element={<RecipeListPage />} />
               <Route path="/recipes/:id" element={<RecipePage />} />
             </Routes>

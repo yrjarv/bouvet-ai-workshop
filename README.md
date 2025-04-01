@@ -24,3 +24,17 @@ Ved slutten av workshoppen vil du ha en fullverdig applikasjon som demonstrerer 
 - **AI-modeller**: For bildebehandling (custom vision), oppskriftsgenerering (gpt-4o-mini) og bildeproduksjon (dall-e-3)
 - **Database**: Azure data tables
 
+## 📚 Velg riktig oppgavetype
+
+For å tilpasse læringsnivået har vi delt oppgavene i to kategorier:
+
+### 🔹 Intro-oppgaver (for 1.- og 2.-klassinger)
+
+- Enkle oppgaver for å bli kjent med **grunnleggende React og Python-kunnskaper**.
+- Grunnleggende bruk av **AI-modeller**.
+
+### 🔹 Oppgaver (for 3.- og 5.-klassinger )
+
+- Gir en **helhetlig forståelse av systemutvikling** og hvordan frontend og backend jobber sammen.
+- Involverer både **React og TypeScript** i frontend samt **AI-integrasjoner** i backend.
+- Mer fokus på **databaser, API-er** og samspillet mellom ulike teknologier.

@@ -14,9 +14,9 @@ class ImageGeneratorClient:
     def generate_image(self, prompt: str) -> str:
         try:
             response = self.client.images.generate(
-                model="dall-e-3",
+                model="PUT_YOUR_MODEL_HERE",  # TODO: oppgave 2.1.2 Sett riktig modell her
                 prompt=prompt,
-                size="1024x1024",
+                size="0",  # TODO: oppgave 2.1.3 Sett riktig størrelse her
                 quality="standard",
                 n=1,
             )

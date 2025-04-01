@@ -12,11 +12,11 @@ export default function UploadImageButton({
   onDone,
 }: GenerateRecipeButtonProps) {
   const uploadImage = async (file: File): Promise<string[] | undefined> => {
-    if (!file) {
-      console.log("Ingen fil valgt");
-      return [];
-    }
-
+    /**
+     * TODO oppgave 1.4.5
+     * Check if a file is selected
+     * If no file is selected, log "No file selected" and return an empty list
+     */
     try {
       const formData = new FormData();
       formData.append("image", file);
@@ -64,10 +64,8 @@ export default function UploadImageButton({
 
   return (
     <div>
-      <button className={styles.buttons} onClick={handleClick}>
-        {" "}
-        Send
-      </button>
+      return{" "}
+      <div>/* TODO 1.4.3 and 1.4.4 Add an button with onClick event */</div>;
     </div>
   );
 }
