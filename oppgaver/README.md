@@ -19,7 +19,7 @@ cd oppgaver/backend
 2. Opprett en `.env`-fil i rooten på backend-prosjektet.
 
 3. Klikk på lenken under og kopier alt.
-   - https://secret-service.bouvet.no/#/s/9b6c185d-b6e1-46ac-b8f6-e5f3b04b4664/xkxNIroVMWo3SBmVHplTWu
+   - https://secret-service.bouvet.no/#/s/e8593add-5821-4c3a-ab41-21efab19d0e8/8dOwTkRCdgr7xilntqlruc
 4. Lim inn i `.env`-filen
 
 ### 3. Kjør prosjektet
