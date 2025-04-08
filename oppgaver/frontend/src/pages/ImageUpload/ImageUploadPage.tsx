@@ -4,9 +4,9 @@ import UploadIcon from "../../images/UploadIcon.tsx";
 import styles from "./ImageUpload.module.css";
 import IngredientTagsContainer from "../../components/IngredientTagsContainer/IngredientTagsContainer.tsx";
 import RecipesContext from "../../context/RecipesContext.tsx";
-import { SpinnerContainer } from "../../components/spinner/SpinnerContainer.tsx";
-import { SelectFileButton } from "../../components/buttons/SelectFileButton.tsx";
-import UploadImageButton from "../../components/buttons/UploadImageButton.tsx";
+import { SpinnerContainer } from "../../components/Spinner/SpinnerContainer.tsx";
+import { SelectFileButton } from "../../components/Buttons/SelectFileButton.tsx";
+import UploadImageButton from "../../components/Buttons/UploadImageButton.tsx";
 
 export function ImageUploadPage() {
   type UploadState = "ERROR" | "IDLE" | "LOADING" | "WAITING_FOR_TAGS";

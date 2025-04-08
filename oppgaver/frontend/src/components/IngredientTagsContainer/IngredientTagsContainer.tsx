@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import styles from "./IngredientTagsContainer.module.css";
 import Recipe from "../../model/Recipe.tsx";
 
+const userId = useUserId();
+
 interface TagProps {
   id: number;
   name: string;
@@ -51,10 +53,16 @@ export default function IngredientTagsContainer({
     setLoading();
   
     try {
-       /*
-     * TODO oppgave 2.1.2
-     *  call generate_recipe endpoint
-     */
+      const response = await fetch(
+        "http://127.0.0.1:5000/generate_recipe",
+        {
+          method: "POST",
+          body: JSON.stringify({ tags, userId }),
+          header: {"Content-Type": "application/json"},
+        },
+      )
+      const response_json = await response.json();
+      onDone(response_json);
 
     } catch(error) {
       console.error("Error sending tags to backend:", error);

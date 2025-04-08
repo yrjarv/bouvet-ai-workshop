@@ -19,7 +19,6 @@ class ImageRecognitionClient:
     def recognize_ingredients(self, image: BytesIO) -> List[str]:
         credentials = ApiKeyCredentials(in_headers={"Prediction-key": self.prediction_key})
         predictor = CustomVisionPredictionClient(self.endpoint, credentials)
-
         try:
             # Make the prediction
             results = predictor.detect_image(
