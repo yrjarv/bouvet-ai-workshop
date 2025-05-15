@@ -1,3 +1,7 @@
+# Bouved AI workshop
+
+This was forked from Bouvet's repository found at [Bouvet-deler/cook-with-AI-workshop](https://github.com/Bouvet-deler/cook-with-AI-workshop)
+
 # Velkommen til Workshop med Bouvet!
 
 ### Tema: Systemutvikling med integrering av Kunstig Intelligens
